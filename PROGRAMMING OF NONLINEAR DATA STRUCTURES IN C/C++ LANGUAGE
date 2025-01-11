@@ -1,0 +1,86 @@
+#include <iostream>
+
+using namespace std;
+
+int tabs = 0;
+int kol_vo = 0;
+int A = 5;
+
+struct branch
+{
+	int data;
+	branch* lbranch;
+	branch* rbranch;
+
+};
+
+
+
+void add(int adata, branch*& abranch)  /// Функция добавления звена в дерево
+{
+	if (!abranch)
+	{
+		abranch = new branch;
+		abranch->data = adata;
+		abranch->lbranch = 0;
+		abranch->rbranch = 0;
+		
+		
+		return;
+	}
+
+	else 
+		if (abranch->data < A)
+		{
+			abranch->data = A;
+		}
+		if (abranch->data > adata)
+		{
+			add(adata, abranch->rbranch);
+		}
+		else
+		{
+			add(adata, abranch->lbranch);
+		}
+
+}  // добавление звеньев для левой и правой ветви
+
+  void show(branch*& Tree)              //Функция обхода
+{
+	if (Tree != NULL)               //Пока не встретится пустое звено
+	{
+		show(Tree->lbranch);               //Рекурсивная функция для вывода левого поддерева
+		cout << Tree->data;               //Отображаем корень дерева
+		show(Tree->rbranch);               //Рекурсивная функции для вывода правого поддерева
+	}
+} // метод обхода дерева
+
+void print(branch* abranch) // печать дерева
+{
+	if (!abranch) return;
+	tabs += 5;
+	print(abranch->lbranch);
+	for (int i = 0; i < tabs; i++) cout << " ";
+	cout << abranch->data << endl;
+
+	print(abranch->rbranch);
+	tabs -= 5;
+	return;
+
+} 
+
+
+
+
+int main()
+{
+	setlocale(0, "");
+	branch* Tree = NULL; // инициализация дерева
+	for (int i = 10; i > 0; i--) add(i, Tree);
+	print(Tree); // вывод дерева на консоль
+	show(Tree);  //Обход дерева
+	delete(Tree);
+	
+
+	return(0);
+}
