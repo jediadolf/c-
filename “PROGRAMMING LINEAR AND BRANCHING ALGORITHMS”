@@ -1,0 +1,32 @@
+#include <conio.h>
+#include <iostream>
+#include <cmath>
+using namespace::std;
+const double e = 2.71828;
+int main()
+{
+	setlocale(0, "");
+	int a, b, x;
+	double z;
+	cout << "Введи a " << endl;
+	cin >> a;
+	cout << "Введи b " << endl;
+	cin >> b;
+	cout << "Введи x " << endl;
+	cin >> x;
+	if (x <= a)
+		z=(1+cosh(x)+(tanh(pow(x,2))),(sin(x)+cos(x)));
+		else {
+		(x>a)&&(x<b);
+		z=7.3*x,(3.17*x+5)+atan(pow(x,-2*log(x)));
+	}
+	if (x>=b)
+	z=abs(asin(x)+e),(1+5*(sin(x),2))+sqrt(abs(1-x));
+	cout << "z =  " << z << endl;
+	system("pause");
+		return(0);
+}
+
+
+
+
